@@ -1,7 +1,7 @@
 import request from 'supertest';
 import bcrypt from 'bcryptjs';
 import jwt from 'jsonwebtoken';
-import app from '../src/server';
+import app from '../src/app';
 import prisma from '@/config/database';
 
 // Jest automatically mocks the prisma import due to setup.ts

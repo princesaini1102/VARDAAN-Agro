@@ -80,15 +80,12 @@ beforeAll(async () => {
   // Setup test database or mock services
 });
 
-afterAll(async () => {
-  // Cleanup after all tests
-});
-
 beforeEach(() => {
   // Reset mocks before each test
   jest.clearAllMocks();
 });
 
-afterEach(() => {
-  // Cleanup after each test
+afterAll(async () => {
+  // Cleanup after all tests
+  await new Promise(resolve => setTimeout(resolve, 100));
 });

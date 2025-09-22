@@ -41,6 +41,8 @@ module.exports = async () => ({
   ],
   setupFilesAfterEnv: ['<rootDir>/tests/setup.ts'],
   testTimeout: 30000,
+  forceExit: true,
+  detectOpenHandles: true,
   moduleNameMapper: {
     '^@/(.*)$': '<rootDir>/src/$1',
   },
