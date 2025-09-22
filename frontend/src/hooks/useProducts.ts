@@ -1,5 +1,5 @@
 import { useQuery, useMutation, useQueryClient } from '@tanstack/react-query';
-import { productsApi } from '@/lib/api';
+import { productApi } from '@/lib/api';
 import { queryKeys } from '@/lib/queryClient';
 import { Product, ProductFilters } from '@/types';
 import { toast } from 'react-hot-toast';
@@ -8,7 +8,7 @@ import { toast } from 'react-hot-toast';
 export const useProducts = (filters?: ProductFilters & { page?: number; limit?: number }) => {
   return useQuery({
     queryKey: queryKeys.products.list(filters || {}),
-    queryFn: () => productsApi.getAll(filters),
+    queryFn: () => productApi.getAll(filters),
     select: (data) => data.data,
   });
 };
@@ -17,7 +17,7 @@ export const useProducts = (filters?: ProductFilters & { page?: number; limit?: 
 export const useProduct = (id: string) => {
   return useQuery({
     queryKey: queryKeys.products.detail(id),
-    queryFn: () => productsApi.getById(id),
+    queryFn: () => productApi.getById(id),
     select: (data) => data.data.data as Product,
     enabled: !!id,
   });
@@ -27,7 +27,7 @@ export const useProduct = (id: string) => {
 export const useFeaturedProducts = (limit?: number) => {
   return useQuery({
     queryKey: queryKeys.products.featured(),
-    queryFn: () => productsApi.getFeatured(limit),
+    queryFn: () => productApi.getFeatured(limit),
     select: (data) => data.data.data as Product[],
   });
 };
@@ -36,7 +36,7 @@ export const useFeaturedProducts = (limit?: number) => {
 export const useRelatedProducts = (productId: string, categoryId: string, limit?: number) => {
   return useQuery({
     queryKey: queryKeys.products.related(productId, categoryId),
-    queryFn: () => productsApi.getRelated(productId, categoryId, limit),
+    queryFn: () => productApi.getRelated(productId, categoryId, limit),
     select: (data) => data.data.data as Product[],
     enabled: !!productId && !!categoryId,
   });
@@ -46,7 +46,7 @@ export const useRelatedProducts = (productId: string, categoryId: string, limit?
 export const useSearchProducts = (query: string, limit?: number) => {
   return useQuery({
     queryKey: queryKeys.products.search(query),
-    queryFn: () => productsApi.search(query, limit),
+    queryFn: () => productApi.search(query, limit),
     select: (data) => data.data.data as Product[],
     enabled: !!query && query.length > 2,
   });
@@ -57,7 +57,7 @@ export const useCreateProduct = () => {
   const queryClient = useQueryClient();
 
   return useMutation({
-    mutationFn: (productData: any) => productsApi.create(productData),
+    mutationFn: (productData: any) => productApi.create(productData),
     onSuccess: (data) => {
       queryClient.invalidateQueries({ queryKey: queryKeys.products.all });
       toast.success('Product created successfully!');
@@ -73,7 +73,7 @@ export const useUpdateProduct = () => {
   const queryClient = useQueryClient();
 
   return useMutation({
-    mutationFn: ({ id, data }: { id: string; data: any }) => productsApi.update(id, data),
+    mutationFn: ({ id, data }: { id: string; data: any }) => productApi.update(id, data),
     onSuccess: (data, variables) => {
       queryClient.invalidateQueries({ queryKey: queryKeys.products.all });
       queryClient.invalidateQueries({ queryKey: queryKeys.products.detail(variables.id) });
@@ -90,7 +90,7 @@ export const useDeleteProduct = () => {
   const queryClient = useQueryClient();
 
   return useMutation({
-    mutationFn: (id: string) => productsApi.delete(id),
+    mutationFn: (id: string) => productApi.delete(id),
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: queryKeys.products.all });
       toast.success('Product deleted successfully!');
@@ -114,7 +114,7 @@ export const useUpdateStock = () => {
       id: string; 
       quantity: number; 
       operation: 'add' | 'subtract' 
-    }) => productsApi.updateStock(id, quantity, operation),
+    }) => productApi.updateStock(id, quantity, operation),
     onSuccess: (data, variables) => {
       queryClient.invalidateQueries({ queryKey: queryKeys.products.all });
       queryClient.invalidateQueries({ queryKey: queryKeys.products.detail(variables.id) });

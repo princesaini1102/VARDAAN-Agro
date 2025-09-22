@@ -136,9 +136,12 @@ export const productApi = {
   getById: (id: string) =>
     api.get(`/api/products/${id}`),
   
-  getFeatured: () =>
-    api.get('/api/products/featured'),
-  
+  getFeatured: (limit?: number) =>
+    api.get('/api/products/featured', { params: { limit } }),
+
+  getRelated: (productId: string, categoryId: string, params?: any) =>
+    api.get(`/api/products/${productId}/related`, { params }),
+
   getByCategory: (categoryId: string, params?: any) =>
     api.get(`/api/products/category/${categoryId}`, { params }),
   
@@ -150,6 +153,8 @@ export const productApi = {
   
   update: (id: string, data: any) =>
     api.put(`/api/products/${id}`, data),
+  updateStock: (id: string, quantity: number, operation: 'add' | 'subtract') =>
+    api.patch(`/api/products/${id}/stock`, { quantity, operation }),
   
   delete: (id: string) =>
     api.delete(`/api/products/${id}`),
@@ -161,11 +166,18 @@ export const cartApi = {
   
   addItem: (productId: string, quantity: number) =>
     api.post('/api/cart/items', { productId, quantity }),
-  
+  add: (productId: string, quantity: number) =>
+    api.post('/api/cart/items', { productId, quantity }),
+
+  update: (productId: string, quantity: number) =>
+    api.put(`/api/cart/items/${productId}`, { quantity }),
+
   updateItem: (productId: string, quantity: number) =>
     api.put(`/api/cart/items/${productId}`, { quantity }),
   
   removeItem: (productId: string) =>
+    api.delete(`/api/cart/items/${productId}`),
+  remove: (productId: string) =>
     api.delete(`/api/cart/items/${productId}`),
   
   clear: () =>
