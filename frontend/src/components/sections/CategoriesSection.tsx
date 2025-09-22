@@ -156,11 +156,11 @@ export function CategoriesSection() {
         <div className="text-center mt-16">
           <div className="bg-gradient-to-r from-green-50 to-blue-50 rounded-2xl p-8 md:p-12">
             <h3 className="text-2xl md:text-3xl font-bold text-gray-900 mb-4">
-              Can't Find What You're Looking For?
+              Can&apos;t Find What You&apos;re Looking For?
             </h3>
             <p className="text-lg text-gray-600 mb-8 max-w-2xl mx-auto">
-              We're constantly expanding our collection. Let us know what you need, 
-              and we'll do our best to source it for you.
+              We&apos;re constantly expanding our collection. Let us know what you need, 
+              and we&apos;ll do our best to source it for you.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <button className="bg-green-600 text-white px-8 py-4 rounded-full font-semibold hover:bg-green-700 transition-all duration-300 transform hover:scale-105">

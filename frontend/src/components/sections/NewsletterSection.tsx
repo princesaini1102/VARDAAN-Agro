@@ -52,7 +52,7 @@ export function NewsletterSection() {
               Welcome to the Family! 🎉
             </h2>
             <p className="text-xl text-green-100 mb-8">
-              Thank you for subscribing! You'll receive your first newsletter with exclusive offers soon.
+              Thank you for subscribing! You&apos;ll receive your first newsletter with exclusive offers soon.
             </p>
             <button
               onClick={() => setIsSubscribed(false)}

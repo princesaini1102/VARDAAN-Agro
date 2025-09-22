@@ -56,7 +56,7 @@ const products: Product[] = [
   },
   {
     id: 4,
-    name: "Lion's Mane",
+    name: "Lion&apos;s Mane",
     price: 599,
     originalPrice: 699,
     rating: 4.9,
@@ -99,10 +99,11 @@ export function FeaturedProducts() {
             >
               {/* Product Image */}
               <div className="relative h-64 overflow-hidden">
-                <img
+                <Image
                   src={product.image}
                   alt={product.name}
-                  className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+                  fill
+                  className="object-cover group-hover:scale-110 transition-transform duration-500"
                 />
                 
                 {/* Badges */}

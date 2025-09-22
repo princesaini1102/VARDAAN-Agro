@@ -46,7 +46,7 @@ export function AboutSection() {
             </h2>
             
             <p className="text-xl text-gray-600 mb-8 leading-relaxed">
-              At Vardaan Agro Farm, we're passionate about cultivating the finest organic mushrooms 
+              At Vardaan Agro Farm, we&apos;re passionate about cultivating the finest organic mushrooms 
               using sustainable farming practices that benefit both our customers and the environment.
             </p>
 
@@ -80,7 +80,7 @@ export function AboutSection() {
                     family operation with a vision to provide fresh, organic mushrooms to local communities.
                   </p>
                   <p className="text-gray-700 leading-relaxed">
-                    Today, we've grown into a leading supplier of premium mushrooms, serving thousands 
+                    Today, we&apos;ve grown into a leading supplier of premium mushrooms, serving thousands 
                     of customers while maintaining our commitment to quality and sustainability.
                   </p>
                 </div>
@@ -167,7 +167,7 @@ export function AboutSection() {
           <div className="text-center mb-12">
             <h3 className="text-3xl font-bold text-gray-900 mb-4">Why Choose Vardaan Agro?</h3>
             <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-              We're committed to delivering excellence in every aspect of our business
+              We&apos;re committed to delivering excellence in every aspect of our business
             </p>
           </div>
 

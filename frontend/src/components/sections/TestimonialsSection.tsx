@@ -75,7 +75,7 @@ export function TestimonialsSection() {
             What Our Customers Say
           </h2>
           <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-            Don't just take our word for it. Here's what our satisfied customers have to say about our products and service.
+            Don&apos;t just take our word for it. Here&apos;s what our satisfied customers have to say about our products and service.
           </p>
         </div>
 
@@ -103,7 +103,7 @@ export function TestimonialsSection() {
               </div>
 
               <blockquote className="text-xl md:text-2xl text-gray-700 leading-relaxed mb-8 font-medium">
-                "{testimonials[currentIndex].content}"
+                &ldquo;{testimonials[currentIndex].content}&rdquo;
               </blockquote>
 
               <div className="flex items-center">

@@ -56,7 +56,7 @@ const products: Product[] = [
   },
   {
     id: 4,
-    name: "Lion's Mane",
+    name: "Lion&apos;s Mane",
     price: 599,
     originalPrice: 699,
     rating: 4.9,
@@ -64,7 +64,7 @@ const products: Product[] = [
     category: "Medicinal Mushrooms",
     inStock: false,
     image: "/images/image3.png",
-    description: "Unique lion's mane mushrooms with seafood-like texture"
+    description: "Unique lion&apos;s mane mushrooms with seafood-like texture"
   }
 ];
 
@@ -210,11 +210,9 @@ export function ProductsPage() {
                     <div className={`relative overflow-hidden ${
                       viewMode === 'list' ? 'w-48 h-48' : 'h-64'
                     }`}>
-                      <img
-                        src={product.image}
-                        alt={product.name}
-                        className="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
-                      />
+                      <div className="w-full h-full bg-gray-200 flex items-center justify-center">
+                        <span className="text-gray-400">Product Image</span>
+                      </div>
                     </div>
 
                     {/* Product Info */}
