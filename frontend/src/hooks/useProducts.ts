@@ -58,7 +58,7 @@ export const useCreateProduct = () => {
 
   return useMutation({
     mutationFn: (productData: any) => productApi.create(productData),
-    onSuccess: (data) => {
+    onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: queryKeys.products.all });
       toast.success('Product created successfully!');
     },
