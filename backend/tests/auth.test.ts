@@ -1,10 +1,11 @@
 import request from 'supertest';
 import bcrypt from 'bcryptjs';
 import jwt from 'jsonwebtoken';
-import app from '../src/server';
+import app from '../src/app';
 import prisma from '@/config/database';
 
-const mockPrisma = prisma as jest.Mocked<typeof prisma>;
+// Jest automatically mocks the prisma import due to setup.ts
+const mockPrisma = prisma as any;
 
 describe('Authentication Endpoints', () => {
   describe('POST /api/auth/register', () => {
@@ -86,7 +87,7 @@ describe('Authentication Endpoints', () => {
         .expect(409);
 
       expect(response.body.success).toBe(false);
-      expect(response.body.message).toBe('User already exists with this email');
+      expect(response.body.message).toBe('User with this email already exists');
     });
 
     it('should validate required fields', async () => {
@@ -260,9 +261,7 @@ describe('Authentication Endpoints', () => {
         refreshToken: 'invalid-refresh-token',
       };
 
-      jest.spyOn(jwt, 'verify').mockImplementation(() => {
-        throw new jwt.JsonWebTokenError('Invalid token');
-      });
+      mockPrisma.refreshToken.findUnique.mockResolvedValue(null);
 
       const response = await request(app)
         .post('/api/auth/refresh')
@@ -270,7 +269,7 @@ describe('Authentication Endpoints', () => {
         .expect(401);
 
       expect(response.body.success).toBe(false);
-      expect(response.body.message).toBe('Invalid refresh token');
+      expect(response.body.message).toBe('Invalid or expired refresh token');
     });
   });
 

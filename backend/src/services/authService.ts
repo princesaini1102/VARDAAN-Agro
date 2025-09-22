@@ -71,7 +71,8 @@ export class AuthService {
       throw new ApiError(401, 'Invalid credentials');
     }
 
-    const { password: _, ...userWithoutPassword } = user;
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
+    const { password: userPassword, ...userWithoutPassword } = user;
     const tokens = await this.generateTokens(user.id);
 
     return { user: userWithoutPassword, tokens };

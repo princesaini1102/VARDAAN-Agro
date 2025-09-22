@@ -64,7 +64,7 @@ export const useCartStore = create<CartStore>()(
       });
 
       try {
-        const response = await cartApi.add(productId, quantity);
+        await cartApi.add(productId, quantity);
         
         // Refresh cart after adding item
         await get().fetchCart();

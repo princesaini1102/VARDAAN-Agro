@@ -72,6 +72,7 @@ export const useAuthStore = create<AuthStore>()(
         });
 
         try {
+          // eslint-disable-next-line @typescript-eslint/no-unused-vars
           const { confirmPassword, ...registerData } = userData;
           const response = await authApi.register(registerData);
           const { user, tokens } = response.data.data;

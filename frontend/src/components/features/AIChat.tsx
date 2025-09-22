@@ -32,7 +32,7 @@ export function AIChat() {
           <div className="p-4 h-64 overflow-y-auto">
             <div className="bg-gray-100 rounded-lg p-3 mb-4">
               <p className="text-sm">
-                Hello! I'm your AI farming assistant. How can I help you with organic products today?
+                Hello! I&apos;m your AI farming assistant. How can I help you with organic products today?
               </p>
             </div>
           </div>

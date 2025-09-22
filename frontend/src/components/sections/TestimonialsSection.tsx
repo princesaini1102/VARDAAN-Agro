@@ -15,7 +15,7 @@ export function TestimonialsSection() {
           ].map((testimonial) => (
             <div key={testimonial.name} className="bg-white rounded-lg p-6 shadow-md">
               <div className="text-yellow-400 text-2xl mb-4">★★★★★</div>
-              <p className="text-gray-600 mb-4">"{testimonial.text}"</p>
+              <p className="text-gray-600 mb-4">&quot;{testimonial.text}&quot;</p>
               <p className="font-semibold text-gray-800">- {testimonial.name}</p>
             </div>
           ))}
