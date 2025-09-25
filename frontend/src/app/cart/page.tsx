@@ -5,6 +5,9 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { Minus, Plus, Trash2, ArrowRight } from 'lucide-react';
 import { useCartStore, useCartTotal } from '@/store/cartStore';
+import { Footer } from '@/components/layout/Footer';
+import { AIChat } from '@/components/features/AIChat';
+import { Header } from '@/components/layout/Header';
 
 export default function CartPage() {
   const { 
@@ -107,6 +110,7 @@ export default function CartPage() {
 
   return (
     <div className="min-h-screen bg-gray-50 py-12">
+      <Header />
       <div className="container mx-auto px-4">
         <div className="max-w-4xl mx-auto">
           <h2 className="text-3xl font-bold text-gray-900 mb-8">Your Cart</h2>
@@ -223,6 +227,8 @@ export default function CartPage() {
           </div>
         </div>
       </div>
+      <AIChat/>
+      <Footer/>
     </div>
   );
 }
