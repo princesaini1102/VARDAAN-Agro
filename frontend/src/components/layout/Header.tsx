@@ -1,13 +1,19 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { ShoppingCart, Menu, X, Search, User } from 'lucide-react';
+import { useCartStore, useCartItemCount } from '@/store/cartStore';
 
 export function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const [cartCount] = useState(0);
+  const { fetchCart } = useCartStore();
+  const cartCount = useCartItemCount();
+
+  useEffect(() => {
+    fetchCart();
+  }, [fetchCart]);
 
   return (
     <header className="sticky top-0 z-50 bg-white/95 backdrop-blur-md shadow-sm border-b border-green-100">
@@ -55,14 +61,14 @@ export function Header() {
             <button className="p-2 text-gray-600 hover:text-green-600 transition-colors">
               <User size={20} />
             </button>
-            <button className="relative p-2 text-gray-600 hover:text-green-600 transition-colors">
+            <Link href="/cart" className="relative p-2 text-gray-600 hover:text-green-600 transition-colors">
               <ShoppingCart size={20} />
               {cartCount > 0 && (
                 <span className="absolute -top-1 -right-1 bg-green-600 text-white text-xs rounded-full w-5 h-5 flex items-center justify-center">
                   {cartCount}
                 </span>
               )}
-            </button>
+            </Link>
             <button className="bg-green-600 text-white px-6 py-2 rounded-full hover:bg-green-700 transition-colors font-medium">
               Shop Now
             </button>
@@ -104,14 +110,14 @@ export function Header() {
                   <button className="p-2 text-gray-600">
                     <User size={20} />
                   </button>
-                  <button className="relative p-2 text-gray-600">
+                  <Link href="/cart" className="relative p-2 text-gray-600">
                     <ShoppingCart size={20} />
                     {cartCount > 0 && (
                       <span className="absolute -top-1 -right-1 bg-green-600 text-white text-xs rounded-full w-5 h-5 flex items-center justify-center">
                         {cartCount}
                       </span>
                     )}
-                  </button>
+                  </Link>
                 </div>
                 <button className="bg-green-600 text-white px-6 py-2 rounded-full hover:bg-green-700 transition-colors font-medium">
                   Shop Now
